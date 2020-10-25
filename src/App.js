@@ -1,26 +1,49 @@
-import React from 'react';
+import React, {Component} from "react"
 import logo from './logo.svg';
 import './App.css';
+import image from './image.jpg'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+ 
+  constructor(){
+    super()
+    this.state= {
+      fullName:"Ali sghari ",bio: "time is money",profession: "Futur full-stack devoloper " ,imgSrc: image ,date: new Date(),show: false
+    };
+  }
+componentDidMount() {
+
 }
+componentUnMount() {
+ 
+}
+hide(){
+  this.setState({
+    show: true
+  })
+}
+   render() {
+    return(
+     <>
 
-export default App;
+     {
+        this.state.show?
+        <div>
+     <h3>fullName :  {this.state.fullName}</h3>
+      <h3>bio  : {this.state.bio}</h3>
+      <h3>profession  : {this.state.profession}</h3>
+     <img src={this.state.imgSrc}/>
+   
+        <h1>Bonjour</h1>
+        <h2>Il est {this.state.date.toLocaleTimeString()}.</h2>
+        </div>
+        :null
+     }
+        <button onClick={()=>this.hide()}> show</button>
+      
+     </>
+     );
+    }
+  }
+
+export default App ;
